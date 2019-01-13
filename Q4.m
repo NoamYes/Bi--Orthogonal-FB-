@@ -46,6 +46,7 @@ figure(1)
 colormap(c)
 imagesc(db(abs(X_one_sided1)));
 set(gca,'YDir','normal');
+title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 % 5.b.2
 
@@ -57,6 +58,7 @@ figure(2)
 colormap(c)
 imagesc(db(abs(X_one_sided2)));
 set(gca,'YDir','normal');
+title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 % 5.b.3
 
@@ -68,5 +70,6 @@ figure(3)
 colormap(c);
 imagesc(db(abs(X_one_sided3)));
 set(gca,'YDir','normal');
+title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 
