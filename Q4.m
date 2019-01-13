@@ -39,9 +39,11 @@ title('Lowpass Filter Designed to Specifications')
 
 win_len = 128;
 noverlap = floor(0.75*win_len);
+c = jet;
 nfft = 192;
 [X1,X_one_sided1] = dstft(x,win_len, noverlap, nfft);
 figure(1)
+colormap(c)
 imagesc(db(abs(X_one_sided1)));
 set(gca,'YDir','normal');
 
@@ -52,6 +54,7 @@ noverlap = floor(0.75*win_len);
 nfft = 1536;
 [X2,X_one_sided2] = dstft(x,win_len, noverlap, nfft);
 figure(2)
+colormap(c)
 imagesc(db(abs(X_one_sided1)));
 set(gca,'YDir','normal');
 
@@ -62,6 +65,7 @@ noverlap = floor(0.5*win_len);
 nfft = 6144;
 [X3,X_one_sided3] = dstft(x,win_len, noverlap, nfft);
 figure(3)
+colormap(c);
 imagesc(db(abs(X_one_sided1)));
 set(gca,'YDir','normal');
 
