@@ -12,7 +12,7 @@ fs = pi;
 
 [n,fo,ao,w] = firpmord([f-0.01*f f],[1 0],[0.01 0.01],fs);
 b = firpm(n,fo,ao,w);
-freqz(b,1,1024,fs)
+%freqz(b,1,1024,fs)
 title('Lowpass Filter Designed to Specifications')
 
 
@@ -55,7 +55,7 @@ nfft = 1536;
 [X2,X_one_sided2] = dstft(x,win_len, noverlap, nfft);
 figure(2)
 colormap(c)
-imagesc(db(abs(X_one_sided1)));
+imagesc(db(abs(X_one_sided2)));
 set(gca,'YDir','normal');
 
 % 5.b.3
@@ -66,7 +66,7 @@ nfft = 6144;
 [X3,X_one_sided3] = dstft(x,win_len, noverlap, nfft);
 figure(3)
 colormap(c);
-imagesc(db(abs(X_one_sided1)));
+imagesc(db(abs(X_one_sided3)));
 set(gca,'YDir','normal');
 
 
