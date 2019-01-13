@@ -45,7 +45,7 @@ nfft = 192;
 figure(1)
 colormap(c)
 imagesc(db(abs(X_one_sided1)));
-set(gca,'YDir','normal');
+axis('xy')
 title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 % 5.b.2
@@ -57,7 +57,7 @@ nfft = 1536;
 figure(2)
 colormap(c)
 imagesc(db(abs(X_one_sided2)));
-set(gca,'YDir','normal');
+axis('xy')
 title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 % 5.b.3
@@ -69,7 +69,26 @@ nfft = 6144;
 figure(3)
 colormap(c);
 imagesc(db(abs(X_one_sided3)));
-set(gca,'YDir','normal');
+axis('xy')
 title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(noverlap) ', ' num2str(nfft)  ']']);
 
 
+%% IDSTFT
+
+
+
+x_hat = idsftf(X3, win_len, noverlap, nfft);
+Ts = 1/fs;
+t = Ts*(1:length(x));
+t_hat = Ts*(1:length(x_hat));
+figure(4)
+
+plot(t, (x),'-', 'LineWidth', 1.5);
+title(['x(t) and x_hat(t) reconstructed with WOLA']) 
+xlabel('t [secs]')
+ylabel('Amp')
+legend({'x(t)'})
+hold on;
+
+plot(t_hat, (x_hat),'-', 'LineWidth', 1.5);
+legend({'x_hat(t)'})

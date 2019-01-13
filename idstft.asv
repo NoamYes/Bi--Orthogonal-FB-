@@ -1,0 +1,14 @@
+function x_hat = idsftf(X, win_len, noverlap, nfft)
+
+
+X_inv = real(ifft(X)); % contains each window(column) idft
+M = size(X,2); % number of windows
+ndft = size(X,1); %order of dft
+x_hat_len = M*ndft-(M-1)*noverlap+ndft; %total len subtracting overlaps
+x_hat = zeros(1,x_hat_len);
+
+
+
+
+end
+
