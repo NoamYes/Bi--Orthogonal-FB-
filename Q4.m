@@ -32,3 +32,37 @@ title('Lowpass Filter Designed to Specifications')
 
 %% Question 5 - STFT
 
+[x, fs] = audioread('sentence_male_speaker.wav');
+% soundsc(x, fs);
+
+% 5.b.1
+
+win_len = 128;
+noverlap = floor(0.75*win_len);
+nfft = 192;
+[X1,X_one_sided1] = dstft(x,win_len, noverlap, nfft);
+figure(1)
+imagesc(db(abs(X_one_sided1)));
+set(gca,'YDir','normal');
+
+% 5.b.2
+
+win_len = 1024;
+noverlap = floor(0.75*win_len);
+nfft = 1536;
+[X2,X_one_sided2] = dstft(x,win_len, noverlap, nfft);
+figure(2)
+imagesc(db(abs(X_one_sided1)));
+set(gca,'YDir','normal');
+
+% 5.b.3
+
+win_len = 4096;
+noverlap = floor(0.5*win_len);
+nfft = 6144;
+[X3,X_one_sided3] = dstft(x,win_len, noverlap, nfft);
+figure(3)
+imagesc(db(abs(X_one_sided1)));
+set(gca,'YDir','normal');
+
+
