@@ -9,9 +9,34 @@ delta = 0.123;
 fs = 2;
 filterFunc = [0.5-delta 0.5+delta];
 [n,fo,ao,w] = firpmord(filterFunc,[1 0],[delta_sp delta_sp], fs);
-b = firpm(n,fo,ao,w);
-freqz(b,1,1024,fs)
-title('Lowpass Filter Designed to Specifications')
+b0 = firpm(n,fo,ao,w);
+figure()
+freqz(b0,1,1024,fs)
+title('H0(\theta)')
+N= length(b0);
+
+b1 = b0.*(-ones(1,N)).^(1:N);
+figure()
+freqz(b1,1,1024,fs)
+title('H1(\theta)')
+
+
+%% Section 1.b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %% Question 5 - STFT
 
