@@ -6,13 +6,15 @@ close all;
 
 rp = 3;           % Passband ripple
 rs = rp;          % Stopband ripple
-f = pi/2;    % Cutoff frequencies
+f = 0.5;    % Cutoff frequencies
 a = [1 0];        % Desired amplitudes
-fs = pi;
-
-[n,fo,ao,w] = firpmord([f-0.01*f f],[1 0],[0.01 0.01],fs);
+delta_sp = 10^(-72/20);
+delta = 0.131;
+fs = 1;
+filterFunc = [0.5-delta 0.5+delta];
+[n,fo,ao,w] = firpmord(filterFunc,[1 0],[delta_sp delta_sp], 2);
 b = firpm(n,fo,ao,w);
-%freqz(b,1,1024,fs)
+freqz(b,1,1024,fs)
 title('Lowpass Filter Designed to Specifications')
 
 

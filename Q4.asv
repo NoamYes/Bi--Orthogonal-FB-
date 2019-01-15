@@ -6,11 +6,13 @@ close all;
 
 rp = 3;           % Passband ripple
 rs = rp;          % Stopband ripple
-f = pi/2;    % Cutoff frequencies
+f = 1/2;    % Cutoff frequencies
 a = [1 0];        % Desired amplitudes
-fs = pi;
-
-[n,fo,ao,w] = firpmord([f-0.01*f f],[1 0],[0.01 0.01],fs);
+delta_sp = 10^(-72/20);
+delta = 0.12;
+fs = 1;
+filterFunc = [
+[n,fo,ao,w] = firpmord([f f],[1 0],[0.01 0.01]);
 b = firpm(n,fo,ao,w);
 %freqz(b,1,1024,fs)
 title('Lowpass Filter Designed to Specifications')
@@ -84,5 +86,11 @@ t_hat = Ts*(1:length(x_hat));
 figure(4)
 
 plot(t, (x),'-', 'LineWidth', 1.5);
+title(['x(t) and x_hat(t) reconstructed with WOLA']) 
+xlabel('t [secs]')
+ylabel('Amp')
 legend({'x(t)'})
+hold on;
 
+plot(t_hat, (x_hat),'-', 'LineWidth', 1.5);
+legend({'x_hat(t)'})
