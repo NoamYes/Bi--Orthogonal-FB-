@@ -4,33 +4,14 @@ close all;
 
 %% Section 1.a
 
-rp = 3;           % Passband ripple
-rs = rp;          % Stopband ripple
-f = 0.5;    % Cutoff frequencies
-a = [1 0];        % Desired amplitudes
 delta_sp = 10^(-72/20);
-delta = 0.131;
-fs = 1;
+delta = 0.123;
+fs = 2;
 filterFunc = [0.5-delta 0.5+delta];
-[n,fo,ao,w] = firpmord(filterFunc,[1 0],[delta_sp delta_sp], 2);
+[n,fo,ao,w] = firpmord(filterFunc,[1 0],[delta_sp delta_sp], fs);
 b = firpm(n,fo,ao,w);
 freqz(b,1,1024,fs)
 title('Lowpass Filter Designed to Specifications')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 %% Question 5 - STFT
 
