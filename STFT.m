@@ -1,4 +1,6 @@
-
+close all
+clear all
+clc
 %% Question 5 - STFT
 
 [x, fs] = audioread('sentence_male_speaker.wav');
@@ -44,8 +46,6 @@ title(['DSTFT [WinLen, overlap, nfft] = ['  num2str(win_len) ', '  num2str(nover
 
 %% IDSTFT
 
-
-
 x_hat = idsftf(X3, win_len, noverlap, nfft);
 Ts = 1/fs;
 t = Ts*(1:length(x));
@@ -61,3 +61,4 @@ hold on;
 
 plot(t_hat, (x_hat),'-', 'LineWidth', 1.5);
 legend({'x_hat(t)'})
+

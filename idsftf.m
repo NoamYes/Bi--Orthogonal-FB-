@@ -16,7 +16,7 @@ idx = (1:ndft).';
     1)*(win_len-noverlap)+idx) + X_inv(:,l);
 
     end
-x_hat = 2*(1-noverlap/window_length)*x_hat;
+x_hat = 2*(1-noverlap/win_len)*x_hat;
 
 
 end
