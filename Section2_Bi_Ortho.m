@@ -59,3 +59,56 @@ figure(4)
 freqz(h1)
 title('Zeros Map of H1 High Pass Filter')
 
+%% Section 2.c
+
+n = 0:127;
+x_n = exp(-n/10).*sin(2*n/3);
+[f0, f1] = createBiOrth(h0, h1);
+[y_n, v1, v2] = two_channel_FB(x_n, h0, h1, f0, f1);
+y_n = 0.5*y_n;
+
+figure(5)
+subplot(2,1,1)
+plot(x_n)
+hold on;
+subplot(2,1,1)
+plot(y_n)
+title('x[n] and y[n], delay = 34')
+legend({'x[n]','y[n]'});
+ylabel('Amp');
+
+d_n = y_n(35:end) - x_n(1:end-34);
+subplot(2,1,2)
+plot(d_n)
+hold on;
+
+title('d[n] - Diff of x and y, considering delay = 34')
+ylabel('Amp');
+
+%% 
+figure(6)
+
+subplot(3,1,1)
+plot(v1)
+hold on;
+plot(v2)
+title('Analysis signals - v1[n] and v2[n]')
+legend({'v1[n]','v2[n]'});
+
+subplot(3,1,2)
+plot(x_n)
+hold on;
+subplot(3,1,2)
+plot(y_n)
+title('x[n] and y[n]]')
+legend({'x[n]','y[n]'});
+ylabel('Amp');
+
+d_n = y_n(35:end) - x_n(1:end-34);
+subplot(3,1,3)
+plot(d_n)
+SNR = db((norm(x_n)/norm(d_n)).^2);
+title('d[n] - Diff of x and y')
+ylabel('Amp');
+
+
