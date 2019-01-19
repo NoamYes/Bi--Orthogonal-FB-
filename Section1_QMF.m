@@ -3,7 +3,7 @@ clc;
 close all;
 dbstop if error
 
-%% Section 1.a
+%% Section 1.a - QMF Filter Banks
 
 delta_sp = 10^(-72/20);
 delta = 0.123;
@@ -86,6 +86,7 @@ plot(d_n)
 SNR = db((norm(x_n)/norm(d_n)).^2);
 title('d[n] - Diff of x and y, considering delay = 32, SNR = 29.86')
 ylabel('Amp');
+
 
 
 
